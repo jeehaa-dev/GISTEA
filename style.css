@@ -229,7 +229,7 @@ main.wadah {
   width: 100%;
   min-height: 44px;
   padding: 10px 12px;
-  border: 1px solid #c4ad98;
+  border: 1px solid #131313;
   border-radius: 8px;
   background: var(--putih);
 }
@@ -320,6 +320,7 @@ main.wadah {
   order: 3;
   display: flex;
   flex: 1 1 100%;
+  min-width: 0;
   gap: 4px;
   padding: 4px;
   border: 2px solid var(--putih);
@@ -574,7 +575,7 @@ body[data-halaman="login"] [data-nav="login"] {
   padding: 1px 8px;
   border: 1px solid #98f28d;
   border-radius: 6px;
-  background: #f7efe4;
+  background: #ffffff;
   color: #000000;
   font-size: 0.65rem;
 }
@@ -1243,7 +1244,7 @@ body[data-halaman="login"] main.wadah {
   padding: 28px 0 16px;
   border-top: 3px solid var(--aksen);
   background: var(--hijau-tua);
-  color: #d9c7b5;
+  color: #ffffff;
   font-size: 0.8rem;
 }
 

@@ -1,5 +1,5 @@
 // Fitur data keranjang dan menu yang sedang dibuka
-"use stritc";
+"use strict";
 
 let keranjang = JSON.parse(localStorage.getItem("keranjang")) || []; 
 let menuDibuka = null; 
