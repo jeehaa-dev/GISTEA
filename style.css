@@ -69,10 +69,26 @@ body {
   flex-direction: column;
   font-family: "Poppins", "Segoe UI", system-ui, Arial, sans-serif;
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--teks);
   background: var(--krem);
   overflow-wrap: anywhere;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 h1,
@@ -324,7 +340,7 @@ main.wadah {
   gap: 4px;
   padding: 4px;
   border: 2px solid var(--putih);
-  border-radius: 10px;
+  border-radius: 30px;
   background: var(--putih);
 }
 
@@ -353,7 +369,7 @@ main.wadah {
   gap: 6px;
   padding: 6px 16px;
   border: 0;
-  border-radius: 8px;
+  border-radius: 30px;
   background: var(--hijau-tua);
   color: var(--putih);
   font-size: 0.85rem;
@@ -403,6 +419,7 @@ main.wadah {
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 20px;
+  font-variant-numeric: tabular-nums;
   text-align: center;
 }
 
@@ -494,11 +511,13 @@ body[data-halaman="login"] [data-nav="login"] {
   border-color: var(--krem-tua);
   background: var(--krem-tua);
   font-weight: 700;
+  border-radius: 30px;
 }
 
 .sisi-item input:focus-visible + span {
   outline: 3px solid var(--aksen);
   outline-offset: 2px;
+  
 }
 
 /* ===== FITUR DAFTAR KARTU MENU ===== */
@@ -552,7 +571,7 @@ body[data-halaman="login"] [data-nav="login"] {
 }
 
 .kartu-label {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -564,8 +583,8 @@ body[data-halaman="login"] [data-nav="login"] {
 }
 
 .kartu-nama {
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
   line-height: 1.35;
 }
 
@@ -577,7 +596,8 @@ body[data-halaman="login"] [data-nav="login"] {
   border-radius: 6px;
   background: #ffffff;
   color: #000000;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
 }
 
 .kartu-bawah {
@@ -592,6 +612,7 @@ body[data-halaman="login"] [data-nav="login"] {
 .harga {
   font-size: 0.95rem;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ===== FITUR FOTO MENU ===== */
@@ -705,6 +726,7 @@ body[data-halaman="login"] main.wadah {
 .masuk-form h1 {
   color: var(--teks);
   font-size: 1.8rem;
+  line-height: 1.2;
   text-align: center;
 }
 
@@ -773,11 +795,15 @@ body[data-halaman="login"] main.wadah {
 .detail-info h1 {
   font-size: 2.2rem;
   line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .detail-deskripsi {
+  max-width: 62ch;
   color: var(--teks-redup);
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  white-space: pre-line;
 }
 
 /* ===== FITUR KASIR ===== */
@@ -796,9 +822,9 @@ body[data-halaman="login"] main.wadah {
   border-bottom: 1px solid var(--garis);
 
   background: var(--krem);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--teks-redup);
 }
@@ -832,7 +858,7 @@ body[data-halaman="login"] main.wadah {
 }
 
 .kasir-harga {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--teks-redup);
 }
 
@@ -1245,7 +1271,8 @@ body[data-halaman="login"] main.wadah {
   border-top: 3px solid var(--aksen);
   background: var(--hijau-tua);
   color: #ffffff;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
 }
 
 .kaki-kolom {
@@ -1278,9 +1305,9 @@ body[data-halaman="login"] main.wadah {
   gap: 8px;
   margin-bottom: 10px;
   color: var(--putih);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
@@ -1321,7 +1348,19 @@ body[data-halaman="login"] main.wadah {
   border-radius: 6px;
   background:  var(--krem);
   color: var(--hijau-tua);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+/* ===== FITUR HAK CIPTA FOOTER (rata tengah) ===== */
+.kaki-hakcipta {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
   text-align: center;
 }
 
@@ -1410,6 +1449,7 @@ body[data-halaman="login"] #halaman-login {
 .sisi-item span {
   padding: 10px 12px;
   border-color: transparent;
+  border-radius: 30px;
 }
 
 .sisi-item input:checked + span::after {
@@ -1744,3 +1784,110 @@ body[data-halaman="login"] #halaman-login {
   }
 }
 
+
+/* =========================================================
+   DESKTOP BESAR (layar >= 1025px): format sama, ukuran diperbesar
+   ========================================================= */
+@media (min-width: 1025px) {
+  body {
+    font-size: 17px;
+  }
+
+  .wadah {
+    max-width: 1680px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  main.wadah {
+    padding-top: 24px;
+    padding-bottom: 40px;
+  }
+
+  /* Header */
+  .logo img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .logo-nama {
+    font-size: 1.3rem;
+  }
+
+  .cari {
+    max-width: 680px;
+  }
+
+  .cari input,
+  .tombol-cari,
+  .navigasi a,
+  .navigasi button {
+    font-size: 0.95rem;
+  }
+
+  /* Katalog: tetap sidebar + 4 kolom, hanya lebih besar */
+  .tata-katalog {
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .sisi {
+    top: 90px;
+    padding: 18px;
+  }
+
+  .sisi-item span {
+    font-size: 0.95rem;
+  }
+
+  .grid-produk {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .kartu-nama {
+    font-size: 1.1rem;
+  }
+
+  .kartu-catatan {
+    font-size: 0.85rem;
+  }
+
+  .kartu-label {
+    font-size: 0.9rem;
+  }
+
+  .harga {
+    font-size: 1.15rem;
+  }
+
+  /* Detail */
+  .detail {
+    gap: 40px;
+    padding: 32px;
+  }
+
+  .detail-info h1 {
+    font-size: 2.6rem;
+  }
+
+  .detail-deskripsi {
+    max-width: none;
+    font-size: 1.05rem;
+  }
+
+  /* Keranjang & checkout */
+  .dua-kolom {
+    grid-template-columns: minmax(0, 1fr) 400px;
+    gap: 24px;
+  }
+
+  .struk-menempel {
+    top: 100px;
+  }
+
+  /* Footer */
+  .kaki {
+    font-size: 0.95rem;
+  }
+}

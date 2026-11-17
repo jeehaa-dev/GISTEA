@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <!-- Fitur responsive: lebar halaman mengikuti lebar layar HP -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="GISTEA - Kedai Teh.">
+    <meta name="description" content="GISTEA - Kedai Teh.">
     <title>Katalog - GISTEA</title>
     <link rel="icon" type="image/png" href="assets/logo_transparan2.png">
     <link rel="stylesheet" href="style.css">
@@ -28,7 +27,8 @@
                 <label class="hanya-pembaca-layar" for="input-cari">Cari menu</label>
                 <input type="search" id="input-cari" autocomplete="off">
                 <button type="submit" class="tombol-cari">
-                    <img src="assets/search.svg" alt="" width="16" height="16">
+                    <img src="assets/icon/search.svg" alt="" width="16" height="16"
+                        style="filter: brightness(0) invert(1);">
                     <span>Cari</span>
                 </button>
             </form>
@@ -36,7 +36,8 @@
             <!-- Fitur navigasi -->
             <nav class="navigasi" aria-label="Navigasi utama">
                 <a href="#/keranjang" data-nav="keranjang" class="nav-keranjang">
-                    <img src="assets/shopping-cart.svg" alt="" width="20" height="20">
+                    <img src="assets/icon/shopping-cart.svg" alt="" width="20" height="20"
+                        style="filter: brightness(0) invert(1);">
                     <span>Keranjang</span>
                     <span class="lencana" id="lencana-keranjang">0</span>
                 </a>
@@ -57,67 +58,106 @@
                 <!-- Fitur filter kategori -->
                 <aside class="sisi" aria-label="Kategori menu">
                     <h2 class="sisi-judul">
-                        <img src="assets/menu.svg" alt="" width="16" height="16">
+                        <img src="assets/icon/menu.svg" alt="" width="16" height="16">
                         Kategori menu
                     </h2>
-                   <div class="kategori">
+                    <div class="kategori">
 
-                        <label class="sisi-item"><input type="radio" name="kategori" value="semua" checked><span>Semua Menu</span></label>
-                        <label class="sisi-item"><input type="radio" name="kategori" value="teh-original"><span>Teh Original</span></label>
-                        <label class="sisi-item"><input type="radio" name="kategori" value="teh-variasi"><span>Variasi Teh</span></label>
+                        <label class="sisi-item"><input type="radio" name="kategori" value="semua" checked><span>Semua
+                                Menu</span></label>
+                        <label class="sisi-item"><input type="radio" name="kategori" value="teh-original"><span>Teh
+                                Original</span></label>
+                        <label class="sisi-item"><input type="radio" name="kategori" value="teh-variasi"><span>Variasi
+                                Teh</span></label>
                     </div>
                 </aside>
 
-                 <!-- Daftar Kartu Menu -->
+                <!-- Daftar Kartu Menu -->
                 <div class="hasil">
                     <div class="grid-produk" id="grid-produk">
                         <!-- Menu 1: Teh Original -->
                         <article class="kartu" data-id="1" data-nama="Teh Original" data-kategori="teh-original"
                             data-harga="4000"
-                            data-deskripsi="Teh original dari petani lokal dengan rasa segar, wangi, dan manis yang pas. Pilihan sederhana yang menyegarkan untuk menemani aktivitasmu kapan saja.">
+                            data-deskripsi="Teh Original GISTEA diseduh dari teh pilihan petani lokal dengan aroma wangi yang khas dan rasa manis yang pas, tidak terlalu pekat dan tidak terlalu ringan. Setiap tegukan terasa segar dan bersih, sehingga mudah dinikmati oleh siapa saja.&#10;&#10;Sajikan dingin dengan es untuk melepas dahaga di siang hari, atau nikmati bersama camilan sebagai teman santai. Pilihan paling sederhana dan terjangkau untuk menemani aktivitasmu kapan saja.">
                             <a class="kartu-tautan" href="#/detail/1">
-                                <div class="kartu-gambar"><div class="kartu-bingkai bingkai-foto">
-                                    <img class="foto" src="assets/es_teh.png" alt="Teh Original">
-                                    <strong class="kartu-label label-foto">Teh Original</strong>
-                                </div></div>
-                                <div class="kartu-isi"><h2 class="kartu-nama">Teh Original</h2><p class="kartu-catatan">Wangi, segar, dan manis</p></div>
-                            </a><div class="kartu-bawah"><p class="harga">Rp4.000</p></div>
+                                <div class="kartu-gambar">
+                                    <div class="kartu-bingkai bingkai-foto">
+                                        <img class="foto" src="assets/es_teh.png" alt="Teh Original">
+                                        <strong class="kartu-label label-foto">Teh Original</strong>
+                                    </div>
+                                </div>
+                                <div class="kartu-isi">
+                                    <h2 class="kartu-nama">Teh Original</h2>
+                                    <p class="kartu-catatan">Es teh lokal segar dengan cita rasa yang khas dan segar.
+                                    </p>
+                                </div>
+                            </a>
+                            <div class="kartu-bawah">
+                                <p class="harga">Rp4.000</p>
+                            </div>
                         </article>
                         <!-- Menu 2: Thai Tea -->
                         <article class="kartu" data-id="2" data-nama="Thai Tea" data-kategori="teh-variasi"
                             data-harga="10000"
-                            data-deskripsi="Teh khas Thailand yang fresh, creamy, dan kaya rasa. Perpaduan teh yang harum dengan kelembutan susu dalam setiap tegukan.">
+                            data-deskripsi="Thai Tea GISTEA menghadirkan cita rasa teh khas Thailand yang fresh, harum, dan kaya rasa. Perpaduan teh yang pekat dengan susu membuat teksturnya creamy dan lembut di setiap tegukan.&#10;&#10;Paling nikmat disajikan dingin dengan es. Cocok untuk kamu yang menyukai minuman manis dan gurih, baik untuk bersantai, menemani waktu nongkrong, maupun sebagai teman istirahat di sore hari.">
                             <a class="kartu-tautan" href="#/detail/2">
-                                <div class="kartu-gambar"><div class="kartu-bingkai bingkai-foto">
-                                    <img class="foto" src="assets/thai_tea.png" alt="Thai Tea">
-                                    <strong class="kartu-label label-foto">Thai Tea</strong>
-                                </div></div>
-                                <div class="kartu-isi"><h2 class="kartu-nama">Thai Tea</h2><p class="kartu-catatan">Khas Thailand dan creamy</p></div>
-                            </a><div class="kartu-bawah"><p class="harga">Rp10.000</p></div>
+                                <div class="kartu-gambar">
+                                    <div class="kartu-bingkai bingkai-foto">
+                                        <img class="foto" src="assets/thai_tea.png" alt="Thai Tea">
+                                        <strong class="kartu-label label-foto">Thai Tea</strong>
+                                    </div>
+                                </div>
+                                <div class="kartu-isi">
+                                    <h2 class="kartu-nama">Thai Tea</h2>
+                                    <p class="kartu-catatan">Teh tarik otentik asal Thailand dengan aroma rempah yang
+                                        khas dan tekstur yang lembut.</p>
+                                </div>
+                            </a>
+                            <div class="kartu-bawah">
+                                <p class="harga">Rp10.000</p>
+                            </div>
                         </article>
                         <!-- Menu 3: Green Tea -->
                         <article class="kartu" data-id="3" data-nama="Green Tea" data-kategori="teh-variasi"
                             data-harga="5000"
-                            data-deskripsi="Green tea yang segar dan harum dengan warna hijau yang cantik. Rasanya ringan, menyenangkan, dan cocok dinikmati dingin.">
+                            data-deskripsi="Green Tea GISTEA dibuat dari teh hijau yang segar dengan aroma harum alami dan warna hijau yang cantik. Rasanya ringan dan menyenangkan, sehingga terasa menyegarkan di setiap tegukan.&#10;&#10;Paling pas dinikmati dingin saat cuaca panas, setelah makan, atau saat kamu butuh minuman yang menenangkan di sela kesibukan. Pilihan tepat bagi pencinta teh dengan rasa yang bersih dan ringan.">
                             <a class="kartu-tautan" href="#/detail/3">
-                                <div class="kartu-gambar"><div class="kartu-bingkai bingkai-foto">
-                                    <img class="foto" src="assets/green_tea.png" alt="Green Tea">
-                                    <strong class="kartu-label label-foto">Green Tea</strong>
-                                </div></div>
-                                <div class="kartu-isi"><h2 class="kartu-nama">Green Tea</h2><p class="kartu-catatan">Segar, harum, dan cantik</p></div>
-                            </a><div class="kartu-bawah"><p class="harga">Rp5.000</p></div>
+                                <div class="kartu-gambar">
+                                    <div class="kartu-bingkai bingkai-foto">
+                                        <img class="foto" src="assets/green_tea.png" alt="Green Tea">
+                                        <strong class="kartu-label label-foto">Green Tea</strong>
+                                    </div>
+                                </div>
+                                <div class="kartu-isi">
+                                    <h2 class="kartu-nama">Green Tea</h2>
+                                    <p class="kartu-catatan">Dipetik dari pucuk daun teh hijau segar dan diproses secara
+                                        alami tanpa oksidasi berlebih.</p>
+                                </div>
+                            </a>
+                            <div class="kartu-bawah">
+                                <p class="harga">Rp5.000</p>
+                            </div>
                         </article>
                         <!-- Menu 4: Milk Green Tea -->
                         <article class="kartu" data-id="4" data-nama="Milk Green Tea" data-kategori="teh-variasi"
                             data-harga="10000"
-                            data-deskripsi="Green tea segar dengan campuran susu creamy. Aroma tehnya tetap terasa dan berpadu dengan rasa susu yang lembut serta menggugah selera.">
+                            data-deskripsi="Milk Green Tea GISTEA memadukan teh hijau yang segar dengan susu yang creamy. Aroma tehnya tetap terasa harum dan berpadu dengan kelembutan susu yang gurih, sehingga rasanya seimbang dan menggugah selera.&#10;&#10;Cocok untuk kamu yang ingin menikmati green tea dengan rasa yang lebih lembut. Sajikan dingin untuk menemani waktu santai, belajar, atau bekerja.">
                             <a class="kartu-tautan" href="#/detail/4">
-                                <div class="kartu-gambar"><div class="kartu-bingkai bingkai-foto">
-                                    <img class="foto" src="assets/milk_green_tea.png" alt="Milk Green Tea">
-                                    <strong class="kartu-label label-foto">Milk Green Tea</strong>
-                                </div></div>
-                                <div class="kartu-isi"><h2 class="kartu-nama">Milk Green Tea</h2><p class="kartu-catatan">Harum dan creamy</p></div>
-                            </a><div class="kartu-bawah"><p class="harga">Rp10.000</p></div>
+                                <div class="kartu-gambar">
+                                    <div class="kartu-bingkai bingkai-foto">
+                                        <img class="foto" src="assets/milk_green_tea.png" alt="Milk Green Tea">
+                                        <strong class="kartu-label label-foto">Milk Green Tea</strong>
+                                    </div>
+                                </div>
+                                <div class="kartu-isi">
+                                    <h2 class="kartu-nama">Milk Green Tea</h2>
+                                    <p class="kartu-catatan">Perpaduan sempurna antara aroma teh hijau pilihan yang khas
+                                        dan segarnya susu creamy yang lembut.</p>
+                                </div>
+                            </a>
+                            <div class="kartu-bawah">
+                                <p class="harga">Rp10.000</p>
+                            </div>
                         </article>
                     </div>
                     <!-- Menu tidak ditemukan -->
@@ -136,15 +176,14 @@
                 <!-- Fitur formulir masuk -->
                 <form class="masuk-form" id="form-login">
                     <!-- Fitur logo dan judul login -->
-                    <img class="masuk-logo" src="assets/logo1.png" alt="GISTEA"
-                        width="72" height="72">
+                    <img class="masuk-logo" src="assets/logo1.png" alt="GISTEA" width="72" height="72">
                     <h1>Selamat datang</h1>
                     <p class="masuk-info">Masuk ke akunmu untuk melanjutkan.</p>
 
                     <div class="kolom-isian">
                         <!-- Fitur isian username -->
                         <label for="isian-username">
-                            <img src="assets/person-outline.svg" alt="" class="ilgn">
+                            <img src="assets/icon/person-outline.svg" alt="" class="ilgn">
                             Username
                         </label>
                         <input type="text" id="isian-username" autocomplete="username" required>
@@ -154,7 +193,7 @@
                     <div class="kolom-isian">
                         <!-- Fitur isian password dan pesan login salah -->
                         <label for="isian-password">
-                            <img src="assets/lock-closed-outline.svg" alt="" class="ilgn">
+                            <img src="assets/icon/lock-closed-outline.svg" alt="" class="ilgn">
                             Password
                         </label>
                         <input type="password" id="isian-password" autocomplete="current-password" required>
@@ -354,74 +393,77 @@
                 </div>
             </div>
         </section>
-        </main>
-        <!-- ===== MENU FOOTER ===== -->
-        <footer class="kaki">
-            <div class="wadah">
-                <div class="kaki-kolom">
-                    <!-- Fitur profil kedai -->
-                    <section>
-                        <p class="kaki-logo">
-                            <img src="assets/logo1.png" alt="" width="auto" height="40">
-                            GISTEA
-                        </p>
-                        <p>Menyajikan Teh pilihan lokal yang fresh dan menyegarkan.</p>
-                    </section>
+    </main>
+    <!-- ===== MENU FOOTER ===== -->
+    <footer class="kaki">
+        <div class="wadah">
+            <div class="kaki-kolom">
+                <!-- Fitur profil kedai -->
+                <section>
+                    <p class="kaki-logo">
+                        <img src="assets/logo1.png" alt="" width="auto" height="40">
+                        GISTEA
+                    </p>
+                    <p>GISTEA adalah kedai teh yang menyajikan minuman teh pilihan dari petani lokal dengan rasa segar,
+                        harum, dan harga yang bersahabat.
+                        Kami percaya teh yang enak berawal dari bahan yang baik, jadi setiap gelas diseduh dengan
+                        takaran yang pas agar rasanya seimbang, tidak terlalu pekat dan tidak terlalu ringan.</p>
+                </section>
 
-                    <!-- Fitur jam buka dan kontak -->
-                    <section>
-                        <h2 class="kaki-judul">Jam buka &amp; kontak</h2>
-                        <dl class="kaki-daftar">
-                            <div>
-                                <dt>Senin - Sabtu</dt>
-                                <dd>08.00 - 21.00 WIB</dd>
-                            </div>
-                            <div>
-                                <dt>Minggu</dt>
-                                <dd>09.00 - 15.00 WIB</dd>
-                            </div>
-                        </dl>
-                        <p class="kaki-info">Pesan online, ambil di kedai</p>
-                        <p class="kaki-info">Instagram: @GISTEA</p>
-                    </section>
+                <!-- Fitur jam buka dan kontak -->
+                <section>
+                    <h2 class="kaki-judul">Jam buka &amp; kontak</h2>
+                    <dl class="kaki-daftar">
+                        <div>
+                            <dt>Senin - Sabtu</dt>
+                            <dd>08.00 - 21.00 WIB</dd>
+                        </div>
+                        <div>
+                            <dt>Minggu</dt>
+                            <dd>09.00 - 15.00 WIB</dd>
+                        </div>
+                    </dl>
+                    <p class="kaki-info">Pesan online, ambil di kedai.</p>
+                    <p class="kaki-info">Instagram: @GISTEA</p>
+                </section>
 
-                    <!-- Fitur metode pembayaran -->
-                    <section>
-                        <h2 class="kaki-judul">Metode pembayaran</h2>
-                        <p class="kaki-info">Menerima pembayaran tunai &amp; digital:</p>
-                        <ul class="kaki-bayar">
-                            <li>TUNAI</li>
-                            <li>QRIS</li>
-                            <li>TRANSFER</li>
-                        </ul>
-                    </section>
-                </div>
-                <!-- Fitur hak cipta -->
-                <p class="kaki-hakcipta">2026@UKKNAUFAL</p>
+                <!-- Fitur metode pembayaran -->
+                <section>
+                    <h2 class="kaki-judul">Metode pembayaran</h2>
+                    <p class="kaki-info">Menerima pembayaran tunai &amp; digital:</p>
+                    <ul class="kaki-bayar">
+                        <li>TUNAI</li>
+                        <li>QRIS</li>
+                        <li>TRANSFER</li>
+                    </ul>
+                </section>
             </div>
-        </footer>
+            <!-- Fitur hak cipta -->
+            <p class="kaki-hakcipta">&copy; 2026 UKKNAUFAL</p>
+        </div>
+    </footer>
 
-        <!-- ===== TEMPLATE BARIS BARANG ===== -->
-        <template id="templat-baris">
-            <article class="baris-keranjang">
-                <div class="baris-gambar"><img class="foto" src="" alt=""></div>
-                <div class="baris-info">
-                    <a href="#/"></a>
-                    <p></p>
+    <!-- ===== TEMPLATE BARIS BARANG ===== -->
+    <template id="templat-baris">
+        <article class="baris-keranjang">
+            <div class="baris-gambar"><img class="foto" src="" alt=""></div>
+            <div class="baris-info">
+                <a href="#/"></a>
+                <p></p>
+            </div>
+            <div class="baris-aksi">
+                <div class="pengatur-jumlah">
+                    <button type="button" data-aksi="kurang" aria-label="Kurangi jumlah">-</button>
+                    <span class="jumlah"></span>
+                    <button type="button" data-aksi="tambah" aria-label="Tambah jumlah">+</button>
                 </div>
-                <div class="baris-aksi">
-                    <div class="pengatur-jumlah">
-                        <button type="button" data-aksi="kurang" aria-label="Kurangi jumlah">-</button>
-                        <span class="jumlah"></span>
-                        <button type="button" data-aksi="tambah" aria-label="Tambah jumlah">+</button>
-                    </div>
-                    <p class="baris-subtotal"></p>
-                    <button type="button" class="tombol-teks" data-aksi="hapus">Hapus</button>
-                </div>
-            </article>
-        </template>
+                <p class="baris-subtotal"></p>
+                <button type="button" class="tombol-teks" data-aksi="hapus">Hapus</button>
+            </div>
+        </article>
+    </template>
 
-        <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
