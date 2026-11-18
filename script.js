@@ -306,3 +306,335 @@ window.addEventListener("hashchange", aturHalaman);
 simpanKeranjang(); 
 aturHalaman(); 
 
+
+
+/* ===== FITUR TAMBAHAN ===== */
+// Fitur tampilkan / sembunyikan password
+ambil("lihat-password").addEventListener("change", function () {
+  ambil("isian-password").type = this.checked ? "text" : "password";
+});
+ambil("form-login").addEventListener("reset", function () {
+  ambil("isian-password").type = "password";
+});
+
+// Fitur animasi saat menambah produk ke keranjang
+ambil("tombol-keranjang").addEventListener("click", function () {
+  const tombol = this;
+  const lencana = ambil("lencana-keranjang");
+  const teksAsli = tombol.textContent;
+
+  // Tombol berubah sebentar
+  tombol.textContent = "✓ Ditambahkan";
+  setTimeout(function () {
+    tombol.textContent = teksAsli;
+  }, 1000);
+
+  // Lencana keranjang membesar sebentar
+  const jumlahDitambah = Number(ambil("isian-jumlah").value);
+  function denyut() {
+    lencana.animate(
+      [{ transform: "scale(1)" }, { transform: "scale(1.6)" }, { transform: "scale(1)" }],
+      { duration: 350 },
+    );
+    // Tulisan +jumlah muncul di bawah lencana lalu memudar
+    const kotak = lencana.getBoundingClientRect();
+    const plus = document.createElement("span");
+    plus.className = "tambah-jumlah";
+    plus.textContent = "+" + jumlahDitambah;
+    plus.style.left = kotak.left + kotak.width / 2 - 14 + "px";
+    plus.style.top = kotak.bottom + 4 + "px";
+    document.body.append(plus);
+    plus.animate(
+      [
+        { transform: "translateY(0)", opacity: 1 },
+        { transform: "translateY(18px)", opacity: 0 },
+      ],
+      { duration: 1000, easing: "ease-out" },
+    ).onfinish = function () {
+      plus.remove();
+    };
+  }
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return denyut();
+  }
+
+  // Foto menu terbang dari tombol ke ikon keranjang
+  const awal = tombol.getBoundingClientRect();
+  const tujuan = lencana.getBoundingClientRect();
+  const terbang = ambil("detail-gambar").cloneNode();
+  terbang.removeAttribute("id");
+  terbang.className = "foto-terbang";
+  terbang.style.left = awal.left + awal.width / 2 - 40 + "px";
+  terbang.style.top = awal.top + awal.height / 2 - 40 + "px";
+  terbang.style.width = "80px";
+  terbang.style.height = "80px";
+  document.body.append(terbang);
+
+  const dx = tujuan.left - parseFloat(terbang.style.left);
+  const dy = tujuan.top - parseFloat(terbang.style.top);
+  terbang.animate(
+    [
+      { transform: "translate(0, 0) scale(1)", opacity: 1 },
+      { transform: "translate(" + dx + "px, " + dy + "px) scale(0.2)", opacity: 0.4 },
+    ],
+    { duration: 700, easing: "ease-in" },
+  ).onfinish = function () {
+    terbang.remove();
+    denyut();
+  };
+});
+
+// Fitur tanya konfirmasi saat keluar dan saat menghapus barang dari keranjang
+// (dipasang di tahap capture agar berjalan sebelum fitur keluar / hapus yang lama)
+let lewati = false;
+document.addEventListener(
+  "click",
+  function (e) {
+    if (lewati) {
+      return;
+    }
+    const hapus = e.target.closest('#daftar-keranjang [data-aksi="hapus"]');
+    let pesan = "";
+    if (e.target.closest("#tombol-keluar")) {
+      pesan = "Yakin ingin keluar dari akun?";
+    } else if (hapus) {
+      pesan = "Hapus menu ini dari keranjang?";
+    }
+    if (!pesan) {
+      return;
+    }
+    const baris = hapus && hapus.closest(".baris-keranjang");
+    if ((baris && baris.classList.contains("hapus-anim")) || !confirm(pesan)) {
+      e.stopPropagation();
+      return;
+    }
+    if (hapus) {
+      // Barang meluncur keluar dulu, baru dihapus
+      e.stopPropagation();
+      baris.classList.add("hapus-anim");
+      setTimeout(function () {
+        lewati = true;
+        hapus.click();
+        lewati = false;
+      }, 350);
+    }
+  },
+  true,
+);
+
+/* ===== KUMPULAN ANIMASI ===== */
+const kurangGerak = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const getar = [
+  { transform: "translateX(0)" },
+  { transform: "translateX(-8px)" },
+  { transform: "translateX(8px)" },
+  { transform: "translateX(-5px)" },
+  { transform: "translateX(5px)" },
+  { transform: "translateX(0)" },
+];
+
+// Daun teh jatuh sebagai hiasan latar
+if (!kurangGerak) {
+  const wadahDaun = document.createElement("div");
+  wadahDaun.className = "daun-wadah";
+  wadahDaun.setAttribute("aria-hidden", "true");
+  for (let i = 0; i < 12; i++) {
+    const daun = document.createElement("span");
+    daun.className = "daun";
+    daun.textContent = "🍃";
+    daun.style.left = Math.random() * 100 + "%";
+    daun.style.fontSize = 16 + Math.random() * 18 + "px";
+    daun.style.animationDuration = 14 + Math.random() * 14 + "s";
+    daun.style.animationDelay = -Math.random() * 20 + "s";
+    wadahDaun.append(daun);
+  }
+  document.body.prepend(wadahDaun);
+}
+
+// Bar progres scroll dan tombol kembali ke atas
+const progres = document.createElement("div");
+progres.id = "progres";
+const keAtas = document.createElement("button");
+keAtas.id = "ke-atas";
+keAtas.type = "button";
+keAtas.setAttribute("aria-label", "Kembali ke atas");
+keAtas.textContent = "↑";
+document.body.append(progres, keAtas);
+window.addEventListener(
+  "scroll",
+  function () {
+    const maks = document.documentElement.scrollHeight - window.innerHeight;
+    progres.style.transform = "scaleX(" + (maks > 0 ? window.scrollY / maks : 0) + ")";
+    keAtas.classList.toggle("tampil", window.scrollY > 300);
+  },
+  { passive: true },
+);
+keAtas.addEventListener("click", function () {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// Efek riak saat tombol diklik
+document.addEventListener("click", function (e) {
+  const tombol = e.target.closest(
+    ".tombol, .tombol-keranjang, .tombol-pesan, .tombol-cari, .navigasi a, .navigasi button, .kasir-jumlah button, .pengatur-jumlah button",
+  );
+  if (!tombol || tombol.disabled || kurangGerak) {
+    return;
+  }
+  const kotak = tombol.getBoundingClientRect();
+  const ukuran = Math.max(kotak.width, kotak.height) * 2;
+  const riak = document.createElement("span");
+  riak.className = "riak";
+  riak.style.width = riak.style.height = ukuran + "px";
+  riak.style.left = e.clientX - kotak.left - ukuran / 2 + "px";
+  riak.style.top = e.clientY - kotak.top - ukuran / 2 + "px";
+  tombol.append(riak);
+  setTimeout(function () {
+    riak.remove();
+  }, 650);
+});
+
+// Placeholder pencarian mengetik otomatis
+(function () {
+  const kolom = ambil("input-cari");
+  if (kurangGerak) {
+    kolom.placeholder = "Cari menu...";
+    return;
+  }
+  const kata = ["Cari Thai Tea...", "Cari Green Tea...", "Cari Teh Original...", "Cari Milk Green Tea..."];
+  let k = 0, h = 0, hapus = false, jeda = 0;
+  setInterval(function () {
+    if (kolom.value || document.activeElement === kolom) {
+      kolom.placeholder = "";
+      return;
+    }
+    if (jeda > 0) {
+      jeda--;
+      return;
+    }
+    const t = kata[k];
+    if (!hapus) {
+      h++;
+      if (h === t.length) { hapus = true; jeda = 12; }
+    } else {
+      h--;
+      if (h === 0) { hapus = false; k = (k + 1) % kata.length; }
+    }
+    kolom.placeholder = t.slice(0, h);
+  }, 110);
+})();
+
+// Angka total ikut membesar sebentar saat berubah
+const pantauan = new MutationObserver(function (daftar) {
+  if (kurangGerak) {
+    return;
+  }
+  daftar.forEach(function (m) {
+    const el = m.target.nodeType === 3 ? m.target.parentElement : m.target;
+    el.animate(
+      [{ transform: "scale(1)" }, { transform: "scale(1.18)" }, { transform: "scale(1)" }],
+      { duration: 350 },
+    );
+  });
+});
+document
+  .querySelectorAll(".total-teks, #keranjang-jumlah, #keranjang-subtotal, #checkout-total, #sukses-total")
+  .forEach(function (el) {
+    pantauan.observe(el, { childList: true, characterData: true, subtree: true });
+  });
+
+// Isian jumlah membesar saat tombol + / - ditekan
+["tombol-tambah", "tombol-kurang"].forEach(function (id) {
+  ambil(id).addEventListener("click", function () {
+    if (!kurangGerak) {
+      ambil("isian-jumlah").animate(
+        [{ transform: "scale(1)" }, { transform: "scale(1.5)" }, { transform: "scale(1)" }],
+        { duration: 250 },
+      );
+    }
+  });
+});
+
+// Getar saat isian salah / login salah
+document.addEventListener(
+  "invalid",
+  function (e) {
+    if (!kurangGerak) {
+      e.target.animate(getar, { duration: 350 });
+    }
+  },
+  true,
+);
+ambil("form-login").addEventListener("submit", function () {
+  if (!ambil("login-salah").hidden && !kurangGerak) {
+    document.querySelector(".masuk").animate(getar, { duration: 400 });
+  }
+});
+
+// Konfeti saat pesanan berhasil
+function konfeti() {
+  const warna = ["#8fe380", "#2e7d32", "#8cc63f", "#ffd54f", "#ff8a65", "#ffffff"];
+  for (let i = 0; i < 50; i++) {
+    const c = document.createElement("span");
+    c.className = "konfeti";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.width = 6 + Math.random() * 6 + "px";
+    c.style.height = 10 + Math.random() * 8 + "px";
+    c.style.background = warna[i % warna.length];
+    document.body.append(c);
+    c.animate(
+      [
+        { transform: "translate(0, 0) rotate(0)" },
+        { transform: "translate(" + (Math.random() - 0.5) * 200 + "px, 105vh) rotate(" + Math.random() * 720 + "deg)" },
+      ],
+      { duration: 2000 + Math.random() * 2000, delay: Math.random() * 500, easing: "cubic-bezier(.3,.6,.5,1)", fill: "backwards" },
+    ).onfinish = function () {
+      c.remove();
+    };
+  }
+}
+
+// Penanda perpindahan halaman (untuk animasi masuk) dan konfeti
+let waktuPindah;
+function aturPindah() {
+  document.body.classList.add("pindah");
+  clearTimeout(waktuPindah);
+  waktuPindah = setTimeout(function () {
+    document.body.classList.remove("pindah");
+  }, 1000);
+  if (document.body.dataset.halaman === "sukses" && !ambil("isi-sukses").hidden && !kurangGerak) {
+    konfeti();
+  }
+}
+window.addEventListener("hashchange", aturPindah);
+aturPindah();
+
+// Footer muncul perlahan saat di-scroll
+(function () {
+  const target = document.querySelectorAll(".kaki-kolom > section, .kaki-hakcipta");
+  target.forEach(function (el, i) {
+    el.classList.add("reveal");
+    el.style.transitionDelay = i * 0.12 + "s";
+  });
+  if (!("IntersectionObserver" in window)) {
+    target.forEach(function (el) { el.classList.add("terlihat"); });
+    return;
+  }
+  const amati = new IntersectionObserver(function (daftar) {
+    daftar.forEach(function (d) {
+      if (d.isIntersecting) {
+        d.target.classList.add("terlihat");
+        amati.unobserve(d.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  target.forEach(function (el) { amati.observe(el); });
+})();
+
+
+// Hero login: hentikan video jika pengguna memilih mengurangi gerakan
+if (kurangGerak) {
+  const videoHero = document.querySelector(".masuk-video");
+  if (videoHero) { videoHero.removeAttribute("autoplay"); videoHero.pause(); }
+}

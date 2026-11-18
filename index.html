@@ -159,6 +159,16 @@
                     </div>
                     <!-- Menu tidak ditemukan -->
                     <p class="kosong" id="katalog-kosong">Menu Tidak Ditemukan</p>
+                    <!-- Fitur opsi menu lain saat pencarian tidak ditemukan -->
+                    <div class="menu-lain" id="menu-lain">
+                        <p>Coba menu lain:</p>
+                        <div class="menu-lain-daftar">
+                            <a href="#/detail/1">Teh Original</a>
+                            <a href="#/detail/2">Thai Tea</a>
+                            <a href="#/detail/3">Green Tea</a>
+                            <a href="#/detail/4">Milk Green Tea</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -167,7 +177,10 @@
             <div class="masuk">
                 <!-- Fitur foto login -->
                 <div class="masuk-visual">
-                    <img src="assets/hero1.png" alt="">
+                    <video class="masuk-video" autoplay muted loop playsinline preload="auto" poster="assets/hero1.png"
+                        aria-hidden="true">
+                        <source src="assets/hero_gistea.mp4" type="video/mp4">
+                    </video>
                 </div>
 
                 <!-- Fitur formulir masuk -->
@@ -197,6 +210,8 @@
                         <p class="pesan-galat">Password wajib diisi.</p>
                         <p class="pesan-galat" id="login-salah" hidden>Username atau password salah.</p>
                     </div>
+                    <!-- Fitur tampilkan password -->
+                    <label class="lihat-pass"><input type="checkbox" id="lihat-password"> Tampilkan password</label>
                     <!-- Fitur tombol masuk -->
                     <button type="submit" class="tombol tombol-utama tombol-lebar tombol-kirim">Masuk</button>
                     <!-- Fitur kembali ke katalog -->
@@ -433,6 +448,12 @@
                         <li>QRIS</li>
                         <li>TRANSFER</li>
                     </ul>
+                </section>
+
+                <!-- Fitur kode QR -->
+                <section class="kaki-qr">
+                    <h2 class="kaki-judul">Scan QR</h2>
+                    <img src="assets/qr_kode.png" alt="Kode QR GISTEA" width="120" height="120">
                 </section>
             </div>
             <!-- Fitur hak cipta -->

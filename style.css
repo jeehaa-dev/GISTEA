@@ -698,10 +698,19 @@ body[data-halaman="login"] main.wadah {
   overflow: hidden;
 }
 
-.masuk-visual img {
+.masuk-visual img,
+.masuk-visual video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Video hero 9:16 mengisi kolom kiri */
+.masuk-visual video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: #0a3d1f;
 }
 
 /* ===== FITUR FORMULIR MASUK ===== */
@@ -1889,5 +1898,628 @@ body[data-halaman="login"] #halaman-login {
   /* Footer */
   .kaki {
     font-size: 0.95rem;
+  }
+}
+
+
+/* =========================================================
+   FITUR TAMBAHAN
+   ========================================================= */
+
+/* ===== FITUR TAMPILKAN PASSWORD ===== */
+.lihat-pass {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 0 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.lihat-pass input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--hijau-tua);
+}
+
+/* ===== FITUR OPSI MENU LAIN (saat pencarian tidak ditemukan) ===== */
+.menu-lain {
+  margin-top: 12px;
+  padding: 16px;
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  background: var(--putih);
+  text-align: center;
+}
+
+.menu-lain p {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.menu-lain-daftar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.menu-lain-daftar a {
+  padding: 6px 16px;
+  border: 1px solid var(--hijau-tua);
+  border-radius: 999px;
+  color: var(--hijau-tua);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.menu-lain-daftar a:hover {
+  background: var(--hijau-tua);
+  color: var(--putih);
+}
+
+#grid-produk:has(.kartu:not([hidden]))~#menu-lain {
+  display: none;
+}
+
+/* ===== FITUR KODE QR FOOTER ===== */
+.kaki-qr img {
+  display: block;
+  width: 120px;
+  height: 120px;
+  padding: 6px;
+  border-radius: 8px;
+  background: var(--putih);
+}
+
+@media (min-width: 769px) {
+  .kaki-kolom {
+    grid-template-columns: 1.4fr 1fr 1fr auto;
+  }
+}
+
+/* ===== FITUR ANIMASI ===== */
+/* Animasi saat detail menu dibuka */
+body[data-halaman="detail"] #isi-detail {
+  animation: muncul 0.45s ease both;
+}
+
+@keyframes muncul {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Animasi foto terbang ke keranjang saat menambah produk */
+.foto-terbang {
+  position: fixed;
+  z-index: 50;
+  object-fit: cover;
+  border-radius: 12px;
+  pointer-events: none;
+  transform-origin: top left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-halaman="detail"] #isi-detail {
+    animation: none;
+  }
+}
+
+/* ===== FITUR +JUMLAH DI BAWAH LENCANA ===== */
+.tambah-jumlah {
+  position: fixed;
+  z-index: 50;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--hijau-tua);
+  color: var(--aksen);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 22px;
+  pointer-events: none;
+}
+
+/* ===== FITUR GARIS PEMISAH FOOTER ===== */
+.kaki-logo,
+.kaki-judul {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.kaki-daftar div,
+.kaki-info {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.kaki-info {
+  margin-top: 0;
+}
+
+.kaki-judul+.kaki-info {
+  margin-top: 0;
+}
+
+.kaki-bayar {
+  margin-top: 12px;
+}
+
+.kaki-qr img {
+  margin-top: 4px;
+}
+
+
+/* =========================================================
+   KUMPULAN ANIMASI
+   ========================================================= */
+
+/* ----- Keyframes ----- */
+@keyframes muncul-halus { from { opacity: 0; } to { opacity: 1; } }
+@keyframes naik { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes turun { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: none; } }
+@keyframes dari-kiri { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: none; } }
+@keyframes dari-kanan { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: none; } }
+@keyframes pop { 0% { opacity: 0; transform: scale(0.8); } 70% { transform: scale(1.04); } 100% { opacity: 1; transform: none; } }
+@keyframes keluar-kiri { to { opacity: 0; transform: translateX(-60px); } }
+@keyframes melayang { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes lompat { 0%, 100% { transform: translateY(0) scale(1); } 40% { transform: translateY(-14px) scale(1.1); } 60% { transform: translateY(0) scale(0.95); } }
+@keyframes goyang { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-14deg); } 75% { transform: rotate(14deg); } }
+@keyframes geser { from { background-position: 0 0; } to { background-position: 200% 0; } }
+@keyframes kilau { 0% { left: -75%; } 40%, 100% { left: 130%; } }
+@keyframes zoom-pelan { from { transform: scale(1); } to { transform: scale(1.12); } }
+@keyframes denyut-cahaya { 0%, 100% { box-shadow: 0 0 0 0 rgba(143, 227, 128, 0.5); } 50% { box-shadow: 0 0 0 10px rgba(143, 227, 128, 0); } }
+@keyframes jatuh {
+  0% { transform: translate(0, -5vh) rotate(0); }
+  50% { transform: translate(40px, 55vh) rotate(180deg); }
+  100% { transform: translate(-20px, 110vh) rotate(360deg); }
+}
+@keyframes riak { to { transform: scale(1); opacity: 0; } }
+
+/* ----- Latar daun teh jatuh (hiasan) ----- */
+.daun-wadah {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.daun {
+  position: absolute;
+  top: -40px;
+  opacity: 0.35;
+  animation: jatuh linear infinite;
+}
+
+main.wadah,
+.kaki {
+  position: relative;
+  z-index: 1;
+}
+
+/* ----- Bar progres scroll & tombol ke atas ----- */
+#progres {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--aksen), var(--hijau-muda));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+#ke-atas {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 30;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--hijau-tua);
+  color: var(--putih);
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(20px) scale(0.6);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s, background 0.2s;
+}
+
+#ke-atas.tampil {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+#ke-atas.tampil:hover {
+  background: var(--hijau-muda);
+  transform: translateY(-4px);
+}
+
+/* ----- Konfeti & riak klik ----- */
+.konfeti {
+  position: fixed;
+  top: -20px;
+  z-index: 60;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.riak {
+  position: absolute;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.3;
+  transform: scale(0);
+  animation: riak 0.6s ease-out forwards;
+  pointer-events: none;
+}
+
+/* ----- Tombol: hover naik, ditekan mengecil, riak, kilau ----- */
+.tombol,
+.tombol-keranjang,
+.tombol-pesan,
+.tombol-cari,
+.navigasi a,
+.navigasi button,
+.kasir-jumlah button,
+.pengatur-jumlah button {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.tombol:not(:disabled):hover,
+.tombol-keranjang:not(:disabled):hover,
+.tombol-pesan:not(:disabled):hover,
+.tombol-cari:hover,
+.navigasi a:hover,
+.navigasi button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(11, 93, 46, 0.25);
+}
+
+.tombol:not(:disabled):active,
+.tombol-keranjang:not(:disabled):active,
+.tombol-pesan:not(:disabled):active,
+.tombol-cari:active,
+.navigasi a:active,
+.navigasi button:active,
+.kasir-jumlah button:not(:disabled):active,
+.pengatur-jumlah button:not(:disabled):active {
+  transform: scale(0.94);
+}
+
+.tombol-kirim::after,
+.tombol-pesan::after,
+.tombol-utama::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  animation: kilau 3.5s infinite;
+  pointer-events: none;
+}
+
+.tombol-pesan:disabled::after {
+  display: none;
+}
+
+.nav-keranjang:hover img {
+  animation: goyang 0.5s;
+}
+
+/* ----- Header ----- */
+.kepala {
+  animation: turun 0.6s ease backwards;
+}
+
+.logo img,
+.kaki-logo img {
+  transition: transform 0.6s;
+}
+
+.logo:hover img,
+.kaki-logo:hover img {
+  transform: rotate(360deg) scale(1.08);
+}
+
+.cari {
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.cari:focus-within {
+  box-shadow: 0 0 0 5px rgba(143, 227, 128, 0.35);
+  transform: scale(1.02);
+}
+
+/* ----- Perpindahan halaman ----- */
+body[data-halaman="katalog"] #halaman-katalog { animation: muncul-halus 0.5s ease backwards; }
+body[data-halaman="keranjang"] #halaman-keranjang,
+body[data-halaman="checkout"] #halaman-checkout { animation: naik 0.5s ease backwards; }
+
+.tautan-kembali,
+.masuk-kembali {
+  transition: transform 0.2s;
+}
+
+.tautan-kembali:hover,
+.masuk-kembali:hover {
+  transform: translateX(-5px);
+}
+
+/* ----- Katalog ----- */
+.sisi { animation: dari-kiri 0.6s ease backwards; }
+
+.sisi-item span {
+  transition: background 0.25s, transform 0.25s, border-radius 0.25s;
+}
+
+.sisi-item:hover span {
+  transform: translateX(4px);
+}
+
+.kartu {
+  animation: naik 0.6s ease backwards;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.kartu:nth-child(1) { animation-delay: 0.05s; }
+.kartu:nth-child(2) { animation-delay: 0.15s; }
+.kartu:nth-child(3) { animation-delay: 0.25s; }
+.kartu:nth-child(4) { animation-delay: 0.35s; }
+
+.kartu:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(11, 93, 46, 0.25);
+}
+
+.kartu .foto {
+  transition: transform 0.5s;
+}
+
+.kartu:hover .foto {
+  transform: scale(1.1);
+}
+
+.kartu-label {
+  transition: transform 0.3s, letter-spacing 0.3s;
+}
+
+.kartu:hover .kartu-label {
+  transform: translateY(-4px);
+  letter-spacing: 0.1em;
+}
+
+.harga {
+  transition: transform 0.3s, color 0.3s;
+  transform-origin: left;
+}
+
+.kartu:hover .harga {
+  transform: scale(1.12);
+  color: var(--hijau);
+}
+
+/* Menu tidak ditemukan & menu lain */
+.kosong {
+  animation: pop 0.5s ease backwards;
+}
+
+#katalog-kosong {
+  animation: goyang 0.6s ease 0.2s;
+}
+
+.menu-lain {
+  animation: naik 0.6s ease 0.2s backwards;
+}
+
+.menu-lain-daftar a {
+  animation: pop 0.5s ease backwards;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.menu-lain-daftar a:nth-child(1) { animation-delay: 0.3s; }
+.menu-lain-daftar a:nth-child(2) { animation-delay: 0.4s; }
+.menu-lain-daftar a:nth-child(3) { animation-delay: 0.5s; }
+.menu-lain-daftar a:nth-child(4) { animation-delay: 0.6s; }
+
+.menu-lain-daftar a:hover {
+  transform: translateY(-3px) scale(1.06);
+}
+
+/* ----- Login ----- */
+body[data-halaman="login"] .masuk { animation: pop 0.7s ease backwards; }
+.masuk-visual img { animation: zoom-pelan 12s ease-in-out infinite alternate; }
+.masuk-logo { animation: melayang 3s ease-in-out infinite; }
+
+body[data-halaman="login"] .masuk-form > * { animation: naik 0.6s ease backwards; }
+.masuk-form > :nth-child(1) { animation-delay: 0.15s; }
+.masuk-form > :nth-child(2) { animation-delay: 0.25s; }
+.masuk-form > :nth-child(3) { animation-delay: 0.35s; }
+.masuk-form > :nth-child(4) { animation-delay: 0.45s; }
+.masuk-form > :nth-child(5) { animation-delay: 0.55s; }
+.masuk-form > :nth-child(6) { animation-delay: 0.65s; }
+.masuk-form > :nth-child(7) { animation-delay: 0.75s; }
+.masuk-form > :nth-child(8) { animation-delay: 0.85s; }
+
+.kolom-isian input,
+.kolom-isian select,
+.kolom-isian textarea {
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.kolom-isian input:focus,
+.kolom-isian select:focus,
+.kolom-isian textarea:focus {
+  box-shadow: 0 0 0 4px rgba(143, 227, 128, 0.3);
+}
+
+.pesan-galat {
+  animation: naik 0.3s ease;
+}
+
+.ilgn {
+  transition: transform 0.3s;
+}
+
+.kolom-isian:focus-within .ilgn {
+  transform: scale(1.25) rotate(-8deg);
+}
+
+/* ----- Detail menu ----- */
+body[data-halaman="detail"] .detail-gambar { animation: pop 0.7s ease backwards; }
+body[data-halaman="detail"] .detail-info > * { animation: naik 0.6s ease backwards; }
+.detail-info > :nth-child(1) { animation-delay: 0.1s; }
+.detail-info > :nth-child(2) { animation-delay: 0.2s; }
+.detail-info > :nth-child(3) { animation-delay: 0.3s; }
+.detail-info > :nth-child(4) { animation-delay: 0.4s; }
+
+.detail-gambar .foto {
+  transition: transform 0.6s;
+}
+
+.detail-gambar:hover .foto {
+  transform: scale(1.1) rotate(1deg);
+}
+
+.kasir {
+  transition: box-shadow 0.3s;
+}
+
+.kasir:hover {
+  box-shadow: 0 6px 18px rgba(11, 93, 46, 0.18);
+}
+
+/* ----- Keranjang, checkout, sukses ----- */
+.baris-keranjang {
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.baris-keranjang:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 14px rgba(11, 93, 46, 0.2);
+}
+
+body.pindah .baris-keranjang { animation: dari-kiri 0.5s ease backwards; }
+body.pindah .baris-keranjang:nth-child(2) { animation-delay: 0.1s; }
+body.pindah .baris-keranjang:nth-child(3) { animation-delay: 0.2s; }
+body.pindah .baris-keranjang:nth-child(4) { animation-delay: 0.3s; }
+body.pindah .baris-keranjang:nth-child(n+5) { animation-delay: 0.4s; }
+
+.baris-keranjang.hapus-anim { animation: keluar-kiri 0.35s ease forwards !important; }
+
+.baris-gambar .foto {
+  transition: transform 0.4s;
+}
+
+.baris-keranjang:hover .foto {
+  transform: scale(1.15);
+}
+
+.dua-kolom > .struk { animation: dari-kanan 0.6s ease 0.1s backwards; }
+
+#form-checkout > .kotak { animation: naik 0.6s ease backwards; }
+#form-checkout > .kotak:nth-child(1) { animation-delay: 0.05s; }
+#form-checkout > .kotak:nth-child(2) { animation-delay: 0.2s; }
+#form-checkout > .kotak:nth-child(3) { animation-delay: 0.35s; }
+
+.kotak {
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.kotak:hover {
+  box-shadow: 0 6px 18px rgba(11, 93, 46, 0.18);
+}
+
+.kotak-nomor {
+  animation: denyut-cahaya 2.5s infinite;
+}
+
+.sukses { animation: pop 0.7s ease backwards; }
+.sukses-ikon { display: inline-block; animation: lompat 1.4s ease-in-out infinite; }
+.sukses h1 { animation: naik 0.6s ease 0.3s backwards; }
+
+/* ----- Footer ----- */
+.kaki::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--aksen), var(--hijau-muda), #ffffff, var(--aksen));
+  background-size: 200% 100%;
+  animation: geser 4s linear infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.terlihat {
+  opacity: 1;
+  transform: none;
+}
+
+.kaki-bayar li {
+  transition: transform 0.2s, background 0.2s;
+}
+
+.kaki-bayar li:hover {
+  transform: translateY(-4px) scale(1.08);
+  background: var(--aksen);
+}
+
+.kaki-daftar div {
+  transition: padding-left 0.25s, background 0.25s;
+}
+
+.kaki-daftar div:hover {
+  padding-left: 8px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.kaki-qr img {
+  transition: transform 0.4s;
+  animation: denyut-cahaya 2.5s infinite;
+}
+
+.kaki-qr img:hover {
+  transform: rotate(-4deg) scale(1.12);
+}
+
+/* ----- Hormati pengguna yang mematikan animasi ----- */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .daun-wadah {
+    display: none;
   }
 }
